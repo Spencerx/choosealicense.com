@@ -11,7 +11,10 @@ require 'colored'
 require 'fuzzy_match'
 
 # Display usage instructions
-puts File.read(__FILE__).scan(/^# .*/)[0...3].join("\n").gsub(/^# /, '') if ARGV.count != 1
+if ARGV.count != 1
+  puts File.read(__FILE__).scan(/^# .*/)[0...3].join("\n").gsub(/^# /, '')
+  exit 1
+end
 
 def yes_no(value)
   value ? 'Yes'.green : 'No'.red
